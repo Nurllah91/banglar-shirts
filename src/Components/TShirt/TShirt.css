@@ -1,0 +1,12 @@
+.tShirt{
+
+    background-color: rgba(247, 6, 191, 0.173);
+    padding: 15px;
+    border: 1px solid red;
+    border-radius: 8px;
+}
+
+
+.tShirt-image img{
+    width: 100%;
+}
