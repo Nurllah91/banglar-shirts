@@ -3,6 +3,8 @@ import { useLoaderData } from 'react-router-dom';
 import TShirt from '../TShirt/TShirt';
 import Cart from '../Cart/Cart';
 import './Home.css'
+import swal from 'sweetalert';
+
 
 const Home = () => {
     const tShirts = useLoaderData();
@@ -13,11 +15,22 @@ const Home = () => {
         const exist = cart.find(ts => ts._id === tShirt._id);
 
         if (exist) {
-
+            swal({
+                title: "Sorry!",
+                text: "You have already added this t-shirt!",
+                icon: "warning",
+                button: "Ok",
+            });
         }
         else {
             const newCart = [...cart, tShirt]
-            setCart(newCart)
+            setCart(newCart);
+            swal({
+                title: "Good job!",
+                text: "You have successfully added this t-shirt!",
+                icon: "success",
+                button: "Ok",
+              });
 
         }
     }
@@ -25,6 +38,13 @@ const Home = () => {
     const removeFromCart = id => {
         const remaining = cart.filter(ts => ts._id != id);
         setCart(remaining);
+
+        swal({
+            title: "Deleted!",
+            text: "You have Deleted this t-shirt!",
+            icon: "warning",
+            button: "Ok",
+          });
     }
 
     return (
